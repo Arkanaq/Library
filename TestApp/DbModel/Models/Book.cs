@@ -9,6 +9,7 @@ namespace TestApp.DbModel.Models
         public string Title { get; set; } = null!;
         public int Pages { get; set; }
         public string Content { get; set; } = null!;
+        public DateTime RegistrationDate { get; set; }
 
     }
 }

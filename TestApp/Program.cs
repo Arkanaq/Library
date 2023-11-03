@@ -6,15 +6,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
-builder.Services.Configure<GameStoreDatabaseSettings>(builder.Configuration.GetSection("GameConnection"));
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+});
+builder.Services.Configure<LibraryStoreDbSettings>(builder.Configuration.GetSection("LibraryConnection"));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IMongoClient>(new MongoClient(builder.Configuration.GetConnectionString("MongoDb")));
-builder.Services.AddSingleton<ItemService>();
-builder.Services.AddSingleton<InventoryService>();
-builder.Services.AddSingleton<PlayerService>();
+builder.Services.AddSingleton<AuthorService>();
+builder.Services.AddSingleton<BookService>();
+builder.Services.AddSingleton<LibraryService>();
+builder.Services.AddSingleton<UserService>();
 
 var app = builder.Build();
 

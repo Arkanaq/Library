@@ -18,6 +18,7 @@ namespace TestApp.DbModel
         public string AuthorCollectionName { get; set; } = null!;
         public string UserCollectionName { get; set; } = null!;
         public string BooksCollectionName { get; set; } = null!;
+        public string LibraryCollectionName { get; set; } = null!;
     }
 
 }
